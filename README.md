@@ -1,39 +1,89 @@
 # Diabetes Prediction System
 
-This project aims to build a **Diabetes Prediction System** using machine learning techniques. The primary goal is to explore various models and practices to achieve the best possible accuracy for predicting diabetes based on the provided dataset.
+## Overview
+
+This project implements a comprehensive Diabetes Prediction System using various machine learning algorithms to classify patients into three categories: Non-Diabetic, Diabetic, and Pre-Diabetic. By comparing different models, we've developed a high-accuracy prediction system that can serve as a screening tool for diabetes risk assessment.
+
+## Models & Performance
+
+| Model                  | Accuracy | Key Features                                 |
+|------------------------|----------|----------------------------------------------|
+| SVM (app.ipynb)        | 92.96%   | Baseline model with rbf kernel               |
+| Enhanced SVM (app1.ipynb) | ~93%   | Improved preprocessing & error handling      |
+| Random Forest (app2.ipynb) | 96.98% | Better non-linear handling & interpretability |
+| Ensemble (app3.ipynb)  | 97.49%   | Feature engineering & multiple model voting   |
 
 ## Dataset
 
-The dataset used in this project is a publicly available diabetes dataset, which contains the following features:
+The dataset (`newDiabetes.csv`) contains important clinical parameters:
 
-- **Pregnancies**: Number of times pregnant
-- **Glucose**: Plasma glucose concentration
-- **BloodPressure**: Diastolic blood pressure (mm Hg)
-- **SkinThickness**: Triceps skinfold thickness (mm)
-- **Insulin**: 2-Hour serum insulin (mu U/ml)
-- **BMI**: Body mass index (weight in kg/(height in m)^2)
-- **DiabetesPedigreeFunction**: Diabetes pedigree function
-- **Age**: Age (years)
-- **Outcome**: Class variable (0 if non-diabetic, 1 if diabetic)
+- **Demographics**: Gender, Age
+- **Blood Chemistry**: Urea, Creatinine, HbA1c
+- **Lipid Profile**: Cholesterol, TG, HDL, LDL, VLDL
+- **Other Metrics**: BMI
+- **Target**: CLASS (N: Non-diabetic, Y: Diabetic, P: Pre-diabetic)
 
-The dataset is stored in the file [`diabetes.csv`](diabetes.csv).
+## Project Structure
 
-## Project Objectives
+### 1. app.ipynb - Support Vector Machine (SVM)
+- Initial approach using SVM classifier
+- Basic data preprocessing
+- Hyperparameter tuning with GridSearchCV
 
-1. **Data Preprocessing**:
-   - Handle missing or zero values in the dataset.
-   - Standardize the data for better model performance.
+### 2. app1.ipynb - Enhanced SVM Implementation
+- Improved data preprocessing
+- Better handling of missing values
+- Enhanced prediction capabilities with probabilities
 
-2. **Model Training**:
-   - Train a Support Vector Machine (SVM) classifier with a linear kernel.
-   - Experiment with different models and hyperparameters to improve accuracy.
+### 3. app2.ipynb - Random Forest Classifier
+- Ensemble learning approach
+- Improved handling of non-linear relationships
+- Better performance on class imbalance
 
-3. **Model Evaluation**:
-   - Evaluate the model's performance using accuracy scores on both training and test datasets.
-   - Compare results across different models and practices.
+### 4. app3.ipynb - Advanced Ensemble with Feature Engineering
+- Feature engineering based on medical domain knowledge
+- Feature selection for focusing on most predictive variables
+- Voting Classifier combining Random Forest, Gradient Boosting, and Neural Networks
+- Achieved highest accuracy (97.49%)
 
-4. **Prediction**:
-   - Use the trained model to predict diabetes for new input data.
+## Key Findings
 
-## Results
-The project focuses on finding the best practices and models to maximize accuracy. The current implementation uses an SVM classifier, and the accuracy scores are displayed for both training and test datasets.
+- **HbA1c** emerged as the most important predictor of diabetes
+- **Feature engineering** (especially HbA1c/BMI ratio) significantly improved performance
+- **Ensemble methods** outperformed single models consistently
+- **Pre-diabetic** class was the most challenging to predict accurately
+
+## Future Improvements
+
+- Implement deep learning models for potentially higher accuracy
+- Add explainability features to help interpret predictions
+- Develop a web interface for easy use by healthcare professionals
+- Expand the dataset and test on external validation datasets
+
+## Requirements
+
+- Python 3.7+
+- pandas
+- numpy
+- scikit-learn
+- matplotlib
+- seaborn
+- xgboost
+
+## Author
+
+[Ravendra Singh](https://github.com/Ravendra1236)
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Diabetes dataset contributors
+- Healthcare professionals who provided domain knowledge
+- Open source community for machine learning libraries
+
+---
+
+⭐ If you find this project helpful, please consider giving it a star on GitHub!
